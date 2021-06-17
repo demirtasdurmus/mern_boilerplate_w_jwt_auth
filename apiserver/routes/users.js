@@ -10,7 +10,6 @@ router.post("/register", async (req, res, next) => {
   try {
     const { name, email, password } = req.body;
     const user = await User.find({ email: email });
-    console.log(user);
     if (user.length == 0) {
       const newPass = bcrypt.hashSync(password, 8)
       const newUser = new User(
@@ -41,7 +40,6 @@ router.post("/login", async (req, res, next) => {
 
     if (user.length != 0) {
       const isPasswordCorrect = bcrypt.compareSync(password, user.password);
-      console.log(user.id);
       if (isPasswordCorrect == true) {
         var token = jwt.sign({ id: user.id, email: user.email }, config.authSecKey);
         res.status(200).send({
