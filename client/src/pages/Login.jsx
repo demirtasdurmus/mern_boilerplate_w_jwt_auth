@@ -23,11 +23,12 @@ export default function Login() {
                 password: password
             })
             .then((res) => {
-                console.log(res.data)
+                console.log(res.data.message)
                 localStorage.setItem("token", JSON.stringify(res.data.token));
                 window.location.assign('/secret');
             }).catch((err) => {
                 console.log(err.response.data.message);
+                alert(err.response.data.message);
             })
     };
 

@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import SecretPage from './pages/SecretPage';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import PrivateRoute from "./routers/PrivateRoute";
+import NotFound from "./pages/NotFound";
 
 
 export default function App() {
@@ -20,7 +21,10 @@ export default function App() {
           <Route path="/edit-sample/:id" exact={true} component={EditSample} />
           <Route path="/register" exact={true} component={Register} />
           <Route path="/login" exact={true} component={Login} />
+
           <PrivateRoute path="/secret" exact={true} component={SecretPage} />
+
+          <Route component={NotFound} />
         </Switch>
       </BrowserRouter>
     </div>

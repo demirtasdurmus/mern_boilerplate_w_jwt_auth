@@ -25,10 +25,11 @@ export default function Register() {
                 password: password
             })
             .then((res) => {
-                console.log(res.data);
+                console.log(res.data.message);
                 window.location.assign('/login');
             }).catch((err) => {
                 console.log(err.response.data.message);
+                alert(err.response.data.message)
             })
     };
 
